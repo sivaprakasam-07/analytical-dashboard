@@ -4,6 +4,10 @@ import Header from '../components/Header';
 import StatsCard from '../components/StatsCard';
 import ChartSection from '../components/ChartSection';
 import ActivityTable from '../components/ActivityTable';
+import PieChartSection from '../components/PieChartSection';
+import DailyGoalWidget from '../components/DailyGoalWidget';
+import UsersWidget from '../components/UsersWidget';
+
 
 const Dashboard = () => {
     const [userData, setUserData] = useState([]);
@@ -46,8 +50,15 @@ const Dashboard = () => {
                 <StatsCard title="Orders" value={stats.orders} />
                 <StatsCard title="Bounce Rate" value={`${stats.bounceRate}%`} />
             </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <UsersWidget />
+            </div>
             <ChartSection users={userData} />
             <ActivityTable users={userData} />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <PieChartSection users={userData} />
+                <DailyGoalWidget />
+            </div>
         </div>
     );
 };
